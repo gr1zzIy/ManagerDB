@@ -1,0 +1,56 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:ManagerDB.ViewModels"
+    x:Class="ManagerDB.Views.FacultiesView"
+    x:DataType="vm:FacultiesViewModel">
+
+    <Grid Margin="20"
+          RowDefinitions="Auto,*,Auto">
+
+        <TextBlock
+            FontSize="24"
+            Text="Факультети" />
+
+        <DataGrid
+            Grid.Row="1"
+            Margin="0,20"
+            ItemsSource="{Binding Faculties}"
+            SelectedItem="{Binding SelectedFaculty}"
+            AutoGenerateColumns="False">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Header="ID"
+                    Binding="{Binding Id}" />
+
+                <DataGridTextColumn
+                    Header="Назва"
+                    Binding="{Binding Name}" />
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+        <StackPanel
+            Grid.Row="2"
+            Orientation="Horizontal"
+            Spacing="8">
+
+            <TextBox
+                Width="300"
+                Watermark="Назва факультету"
+                Text="{Binding FacultyName}" />
+
+            <Button
+                Content="Додати"
+                Command="{Binding AddCommand}" />
+
+            <Button
+                Content="Видалити"
+                Command="{Binding DeleteCommand}" />
+
+        </StackPanel>
+
+    </Grid>
+
+</UserControl>
